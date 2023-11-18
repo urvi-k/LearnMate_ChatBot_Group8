@@ -24,7 +24,7 @@ namespace OrderBot
         public Session(string sPhone)
         {
             this.oOrder = new Order();
-            this.oOrder.Phone = sPhone;
+            Order.CreateDataTable();
         }
 
         public List<String> OnMessage(String sInMessage)
