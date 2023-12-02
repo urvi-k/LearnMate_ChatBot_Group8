@@ -4,25 +4,16 @@ namespace LearnMateBot
 {
     public class Order : ISQLModel
     {
-        private string _size = String.Empty;
-        private string _phone = String.Empty;
+        private string _student_id = String.Empty;
         private string _assistance_type = String.Empty;
         private string _game_type = String.Empty;
         private string _course_type = String.Empty;
         private string _game_name = String.Empty;
         private string _course_name = String.Empty;
-        private string _online_time = String.Empty;
-        private string _class_number = String.Empty;
-        private string _professor_name = String.Empty;
 
-        public string Phone {
-            get => _phone;
-            set => _phone = value;
-        }
-
-        public string Size {
-            get => _size;
-            set => _size = value;
+        public string StudentId {
+            get => _student_id;
+            set => _student_id = value;
         }
 
         public string AssistanceType
@@ -55,23 +46,6 @@ namespace LearnMateBot
             set => _course_name = value;
         }
 
-        public string OnlineTime
-        {
-            get => _online_time;
-            set => _online_time = value;
-        }
-
-        public string ClassNumber
-        {
-            get => _class_number;
-            set => _class_number = value;
-        }
-
-        public string ProfessorName
-        {
-            get => _professor_name;
-            set => _professor_name = value;
-        }
         public void Save()
         {
 
@@ -89,20 +63,14 @@ namespace LearnMateBot
                         course_type = $course_type,
                         game_name = $game_name,
                         course_name = $course_name,
-                        online_time = $online_time,
-                        class_number = $class_number,
-                        professor_name = $professor_name
-                    WHERE phone = $phone
+                    WHERE student_id = $student_id
                 ";
                 commandUpdate.Parameters.AddWithValue("$assistance_type", AssistanceType);
                 commandUpdate.Parameters.AddWithValue("$game_type", GameType);
                 commandUpdate.Parameters.AddWithValue("$course_type", CourseType);
                 commandUpdate.Parameters.AddWithValue("$game_name", GameName);
                 commandUpdate.Parameters.AddWithValue("$course_name", CourseName);
-                commandUpdate.Parameters.AddWithValue("$online_time", OnlineTime);
-                commandUpdate.Parameters.AddWithValue("$class_number", ClassNumber);
-                commandUpdate.Parameters.AddWithValue("$professor_name", ProfessorName);
-                commandUpdate.Parameters.AddWithValue("$phone", Phone);
+                commandUpdate.Parameters.AddWithValue("$student_id", StudentId);
                 int nRows = commandUpdate.ExecuteNonQuery();
 
                 if (nRows == 0)
@@ -110,18 +78,15 @@ namespace LearnMateBot
                     var commandInsert = connection.CreateCommand();
                     commandInsert.CommandText =
                     @"
-                        INSERT INTO Data(assistance_type, game_type, course_type, game_name, course_name, online_time, class_number, professor_name, phone)
-                        VALUES($assistance_type, $game_type, $course_type, $game_name, $course_name, $online_time, $class_number, $professor_name, $phone)
+                        INSERT INTO Data(assistance_type, game_type, course_type, game_name, course_name, student_id)
+                        VALUES($assistance_type, $game_type, $course_type, $game_name, $course_name, $student_id)
                     ";
                     commandInsert.Parameters.AddWithValue("$assistance_type", AssistanceType);
                     commandInsert.Parameters.AddWithValue("$game_type", GameType);
                     commandInsert.Parameters.AddWithValue("$course_type", CourseType);
                     commandInsert.Parameters.AddWithValue("$game_name", GameName);
                     commandInsert.Parameters.AddWithValue("$course_name", CourseName);
-                    commandInsert.Parameters.AddWithValue("$online_time", OnlineTime);
-                    commandInsert.Parameters.AddWithValue("$class_number", ClassNumber);
-                    commandInsert.Parameters.AddWithValue("$professor_name", ProfessorName);
-                    commandInsert.Parameters.AddWithValue("$phone", Phone);
+                    commandInsert.Parameters.AddWithValue("$student_id", StudentId);
                     int nRowsInserted = commandInsert.ExecuteNonQuery();
                 }
             }
@@ -143,10 +108,7 @@ namespace LearnMateBot
                         course_type TEXT,
                         game_name TEXT,
                         course_name TEXT,
-                        online_time TEXT,
-                        class_number TEXT,
-                        professor_name TEXT,
-                        phone TEXT PRIMARY KEY
+                        student_id TEXT PRIMARY KEY
                     );
                 ";
 

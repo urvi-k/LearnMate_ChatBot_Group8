@@ -114,13 +114,13 @@ namespace LearnMateBot
                     break;
                
                 case State.GAME_ASSISTANCE:
-                        aMessages.Add("You will get assisted by Prof. Kumar Bhojanapalli, On 1/12/2023 in class number:" + oOrder.ClassNumber);
+                        aMessages.Add("You will get assisted by Prof. Kumar Bhojanapalli, On 1/12/2023 in class number 2A23");
                         aMessages.Add("Thank You");
                     break;
                 case State.COURSE_ASSISTANCE:
                     if (sInMessage.ToLower() == "lab" || sInMessage.ToLower() == "theory")
                     {
-                        aMessages.Add("You will get assisted by Prof. Kumar Bhojanapalli, On 1/15/2023 in class number:" + oOrder.ClassNumber);
+                        aMessages.Add("You will get assisted by Prof. Kumar Bhojanapalli, On 1/15/2023 in class number 2A23");
                         aMessages.Add("Thank You");
                     }
                     else {

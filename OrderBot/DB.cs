@@ -7,7 +7,7 @@ namespace LearnMateBot
     public class DB
     {
         public static string GetConnectionString(){
-            string sFName = "/Orders.db";
+            string sFName = "/Data.db";
             string sPrefix = "Data Source=";
             string sReturn = sPrefix + Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + sFName;
             string sPath = Directory.GetCurrentDirectory();
